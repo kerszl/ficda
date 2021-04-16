@@ -1,0 +1,12 @@
+#Instaluje moduly
+#pip install -r requirements.txt
+#pokazuje jakie są moduly
+#pip freeze 
+#pkg1
+#pkg2
+#pkg3>=1.0,<=2.0
+bs4
+#tqdm
+requests
+#pyyaml
+#PyYAML
