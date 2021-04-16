@@ -1,1 +1,3 @@
-dane_do_formularza.py
+.gitignore 
+*.html
+.gitignore
