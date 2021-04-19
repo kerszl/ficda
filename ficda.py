@@ -1,19 +1,20 @@
 from bs4 import BeautifulSoup as bs
-#import urllib
 from urllib.request import urlopen
 import re
 import json
 from time import sleep
 from random import randint
+import sqlite3
+from sqlite3 import Error as sqlite3Error
 
 #MAIN_LINK = 'https://www.cdaction.pl/magazyn/'
-MAIN_LINK_1NR = 'https://www.cdaction.pl/magazyn/numer-2-30.html'
-MAIN_LINK_241NR = 'https://www.cdaction.pl/magazyn/numer-241-1.html'
+#MAIN_LINK_1NR = 'https://www.cdaction.pl/magazyn/numer-2-30.html'
+#MAIN_LINK_241NR = 'https://www.cdaction.pl/magazyn/numer-241-1.html'
 #https://www.cdaction.pl/magazyn/numer-241-1.html
 #przykładowy numer
 #https://www.cdaction.pl/magazyn/numer-4-30.html
 #CALY_LINK='https://www.cdaction.pl/magazyn/numer-4-14.html'
-CALY_LINK = 'file:///mnt/d/moje programy i inne/GNU/ficda/przykladowa_strona.html'
+#CALY_LINK = 'file:///mnt/d/moje programy i inne/GNU/ficda/przykladowa_strona.html'
 
 
 
@@ -35,12 +36,17 @@ class MyScrap:
     CLASS_TAG1={"class":"blok_info"}
     CLASS_TAG2={"class":"tytul"}
 
+    #CLASS_TAG3={"class":"okladka"}
+    CLASS_TAG3={"class":"przegladarka"}
+
+
     MAIN_LINK = 'https://www.cdaction.pl/magazyn/'
 
     site =''
     page =''    
     section_title=[]
     nr = ''
+    date =''
     scraped = False
 
 
@@ -55,11 +61,16 @@ class MyScrap:
         body = urlopen(self.site) 
         soup = bs(body,'html.parser')
         self.page = soup.find_all(self.DIV_TAG,self.CLASS_TAG1)
+        try:
+            self.date = soup.find(self.DIV_TAG,self.CLASS_TAG3).find("h1").text
+        except:
+            pass
+        #self.date = soup.find_all("h1")
         self.scrap_nr()
     
     def scrap_nr (self):
         self.nr = re.search('(https://)(www.cdaction.pl/)(magazyn/)(numer-[0-9]*)(-.*)(.html)',self.site)[4]
-        
+            
 
     def scrap (self):        
         self.section_title=[]
@@ -69,7 +80,8 @@ class MyScrap:
                 if (a==chapter_names):
                     b=i.find_all(self.DIV_TAG,self.CLASS_TAG2)
                     for j in b:
-                        self.section_title.append({self.nr:{chapter_names:j.text}})
+                        nr_and_date=self.nr.replace("numer-","") +" "+self.date                        
+                        self.section_title.append({nr_and_date:{chapter_names:j.text}})
 
         self.scraped=True
         return self.section_title
@@ -92,17 +104,17 @@ class MyScrap:
                 exit()
 
 
+class MyJson2Sql3:
+    pass
 
-#a=MyScrap(CALY_LINK)
 
 
 #---zgrywamy numery do formatu json
-
-for i in range(244,245):
+for i in range(1,245):
     a=MyScrap(i)
     a.scrap()
     a.json_dumping()    
-    sleep (randint(1,2))
+    sleep (randint(1,3))
 
 
 
