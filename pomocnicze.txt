@@ -1,0 +1,6 @@
+komenda do stworzenia tabeli w sqlite3
+
+sqlite3 cdaction.db
+CREATE TABLE IF NOT EXISTS magazines (id integer PRIMARY KEY AUTOINCREMENT,nr_magazine integer text NOT NULL,date text NOT NULL, section text NOT NULL, title text NOT NULL, types_of_game, page_numbers text, score REAL, url text, reviewer text);
+.exit
+
