@@ -9,7 +9,8 @@ from random import randint
 import sqlite3
 from pathlib import Path
 
-
+LAST_NUMBER = 244 #last nr of cd action
+BASE_NAME = "cdaction.db" #name of cd action base with games
 
 #MAIN_LINK = 'https://www.cdaction.pl/magazyn/'
 #MAIN_LINK_1NR = 'https://www.cdaction.pl/magazyn/numer-2-30.html'
@@ -50,9 +51,10 @@ class MyCdActionScrap:
     nr = ''
     date =''
     scraped = False
+    
 
 
-    def __init__ (self, curr_nr:int, biggest_nr=244):
+    def __init__ (self, curr_nr:int, biggest_nr=LAST_NUMBER):
         if curr_nr>biggest_nr:
             print ("Za duzy numer - ",curr_nr)
             exit()
@@ -130,12 +132,11 @@ class MySqlite3:
             print (e)
             exit ()
         if truncate:
-            self.truncate_db()
+            self.__truncate_db()
                     
-    def truncate_db (self):
+    def __truncate_db (self):
                 self.cursor.execute("DELETE FROM magazines")
-                self.cursor.execute("UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='magazines'")
-                
+                self.cursor.execute("UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='magazines'")                
                 self.conn.commit()
 
 
@@ -150,8 +151,8 @@ class MySqlite3:
                 nr_date=re.search("(\d*) (.*)",nr_date_).groups() #->tablica
                 section = list(dict(i[nr_date_]).keys())[0]
                 title = list(dict(i[nr_date_]).values())[0]
-                self.cursor.execute("INSERT OR IGNORE INTO magazines (nr_magazine,date,section,title,types_of_game, page_numbers, score, url, reviewer) VALUES(?,?,?,?,?,?,?,?,?)",\
-                            (nr_date[0],nr_date[1],section,title,"NULL","NULL","NULL","NULL","NULL"))
+                self.cursor.execute("INSERT OR IGNORE INTO magazines (nr_magazine,date,section,title,types_of_game, page_numbers, score, url, reviewer, platform) VALUES(?,?,?,?,?,?,?,?,?,?)",\
+                            (nr_date[0],nr_date[1],section,title,"NULL","NULL","NULL","NULL","NULL","NULL"))
                 self.conn.commit()
         else:   
                 nr_date = [0,0]                                                
@@ -159,12 +160,25 @@ class MySqlite3:
                 nr_date[1]= "NULL"
                 section = "NULL"
                 title = "NULL"
-                self.cursor.execute("INSERT OR IGNORE INTO magazines (id,date,section,title,types_of_game, page_numbers, score, url, reviewer) VALUES(?,?,?,?,?,?,?,?,?)",\
-                            (nr_date[0],nr_date[1],section,title,"NULL","NULL","NULL","NULL","NULL"))
+                self.cursor.execute("INSERT OR IGNORE INTO magazines (id,date,section,title,types_of_game, page_numbers, score, url, reviewer, platform) VALUES(?,?,?,?,?,?,?,?,?,?)",\
+                            (nr_date[0],nr_date[1],section,title,"NULL","NULL","NULL","NULL","NULL","NULL"))
                 self.conn.commit()                       
             
         print ("Cd action nr "+str(pure_numer)+" wrzucony do bazy") 
-    
+            
+
+   
+    def search_title(self,title):
+        self.cursor.execute("SELECT * FROM magazines WHERE title LIKE "+"'%"+title+"%'")
+        title_found = self.cursor.fetchall()
+        return title_found
+
+                
+        #self.conn.commit()                       
+
+
+
+
     def __json_load (self, json_file):        
         try:
             with open(json_file, 'r') as f:
@@ -186,17 +200,25 @@ class MySqlite3:
 #     sleep (randint(1,3))
 
 #
-BASE_NAME = "cdaction.db"
-baza = MySqlite3 (BASE_NAME,truncate=True)
+#--- Zczytujemy pliki json i wrzucamy wszystko do bazy sqlite
 
-for i in range(12,16):
-    json_iter="numery/numer-"+str(i)+".json"
-    baza.update_db(json_iter)
+####baza = MySqlite3 (BASE_NAME,truncate=True)
+# baza = MySqlite3 (BASE_NAME)
+# for i in range(1,LAST_NUMBER):
+#     json_iter="numery/numer-"+str(i)+".json"
+#     baza.update_db(json_iter)
+# baza.close_db()
 
-    
-    
+#-----------
+#zrobic ladne wyswietlanie i z linii polece
+
+baza = MySqlite3 (BASE_NAME)
+result=baza.search_title("carrion")
+
+for i,j in enumerate(result):
+    print (str(i+1)+" "+str(j[1])+" "+str(j[2])+" "+str(j[3])+" "+str(j[4]))
+
 baza.close_db()
-
 
 
 
