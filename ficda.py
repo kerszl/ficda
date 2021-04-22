@@ -213,7 +213,9 @@ class MySqlite3:
 #zrobic ladne wyswietlanie i z linii polece
 
 baza = MySqlite3 (BASE_NAME)
-result=baza.search_title("carrion")
+#result=baza.search_title("Assassin's creed valhalla")
+#result=baza.search_title("Shadow of tomb raider")
+result=baza.search_title("shadow of the tomb raider")
 
 for i,j in enumerate(result):
     print (str(i+1)+" "+str(j[1])+" "+str(j[2])+" "+str(j[3])+" "+str(j[4]))

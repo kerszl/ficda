@@ -1,3 +1,5 @@
+LAST_NUMBER =244
+
 class MyCdActionScrap:
     CHAPTERS = {
     'CHAPTER_GAME1':'ZA PIĘĆ DWUNASTA',
@@ -26,9 +28,10 @@ class MyCdActionScrap:
     nr = ''
     date =''
     scraped = False
+    
 
 
-    def __init__ (self, curr_nr:int, biggest_nr=244):
+    def __init__ (self, curr_nr:int, biggest_nr=LAST_NUMBER):
         if curr_nr>biggest_nr:
             print ("Za duzy numer - ",curr_nr)
             exit()
@@ -79,3 +82,4 @@ class MyCdActionScrap:
                 print ("Problem z plikiem "+file+" lub formatem json")
                 print (e)        
                 exit()
+
