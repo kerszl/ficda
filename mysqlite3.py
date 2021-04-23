@@ -1,3 +1,8 @@
+from pathlib import Path
+import sqlite3
+import json
+import re
+
 class MySqlite3:
     conn = 0
     cursor = 0
@@ -57,20 +62,13 @@ class MySqlite3:
                 self.conn.commit()                       
             
         print ("Cd action nr "+str(pure_numer)+" wrzucony do bazy") 
-            
-
-   
+               
     def search_title(self,title):
         self.cursor.execute("SELECT * FROM magazines WHERE title LIKE "+"'%"+title+"%'")
         title_found = self.cursor.fetchall()
         return title_found
 
-                
-        #self.conn.commit()                       
-
-
-
-
+                        
     def __json_load (self, json_file):        
         try:
             with open(json_file, 'r') as f:
