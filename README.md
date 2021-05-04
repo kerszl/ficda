@@ -6,4 +6,5 @@ Nazwy gier zostały zescrapowane ze strony https://www.cdaction.pl/magazyn/
 
 Plik bazy danych jest w formacie sqlite3, nazywa się "cdaction.db".
 
+
 ![Screenshot](screen.png)
