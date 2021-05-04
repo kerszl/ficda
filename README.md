@@ -1,4 +1,7 @@
 # ficda
-Baza danych gier z cdaction obecnie numery (1-245), będzie uzupełniane.
+Baza danych gier z cdaction (obecnie numery 1-245 (nie wszystkie))
+Baza danych będzie w miarę możliwości dodawana o nowe numery.
+Jeżeli masz ochotę i czas, to możesz uzupełnić kolumny i mi wysłać.
+Nazwy gier zostały zescrapowane ze strony https://www.cdaction.pl/magazyn/
 
-plik bazy danych jest sqlite3 "cdaction.db"
+Plik bazy danych jest w formacie sqlite3, nazywa się "cdaction.db".
