@@ -1,6 +1,6 @@
 # Ficda
 
-Jest to Baza danych gier z cdaction (obecnie numery 1-245 (nie wszystkie))\
+Jest to Baza danych gier z cdaction (obecnie numery 1-245 (nie wszystkie są na stronie))\
 Do bazy w miarę możliwości będą dodawane nowe numery.\
 Jeżeli masz ochotę i czas, to możesz uzupełnić kolumny i mi wysłać.\
 Nazwy gier zostały zescrapowane ze strony https://www.cdaction.pl/magazyn/\
