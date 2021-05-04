@@ -1,4 +1,4 @@
-LAST_NUMBER =244 #last number of cdaction
+LAST_NUMBER =245 #last number of cdaction
 
 from urllib.request import urlopen
 from bs4 import BeautifulSoup as bs

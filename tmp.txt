@@ -1,0 +1,19 @@
+import pandas as pd
+import sqlite3
+
+conn = sqlite3.connect('your_cool_database.sqlite')
+
+df = pd.read_sql('SELECT * from orders', conn)
+df.to_csv('orders.csv', index = False)
+
+You can customize the query to only export part of the sqlite table to the CSV file.
+
+You can also run a single command to export all sqlite tables to CSV files:
+
+for table in c.execute("SELECT name FROM sqlite_master WHERE type='table';").fetchall():
+    t = table[0]
+    df = pd.read_sql('SELECT * from ' + t, conn)
+    df.to_csv(t + '_one_command.csv', index = False)
+
+https://mungingdata.com/sqlite/export-tables-queries-to-csv-parquet/
+https://stackoverflow.com/questions/6076984/sqlite-how-do-i-save-the-result-of-a-query-as-a-csv-file

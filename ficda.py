@@ -28,12 +28,12 @@ LAST_NUMBER=LAST_NUMBER+1
 
 #2.--- Zczytujemy pliki json i wrzucamy wszystko do bazy sqlite
 
-baza = MySqlite3 (BASE_NAME,truncate=True) #uwaga, tworzy baze od zera!!!
+#baza = MySqlite3 (BASE_NAME,truncate=True) #uwaga, tworzy baze od zera!!!
 #baza = MySqlite3 (BASE_NAME)
-for i in range(1,LAST_NUMBER):
-    json_iter="numery/numer-"+str(i)+".json"
-    baza.update_db(json_iter)
-baza.close_db()
+#for i in range(1,LAST_NUMBER):
+#    json_iter="numery/numer-"+str(i)+".json"
+#    baza.update_db(json_iter)
+#baza.close_db()
 
 #-----------
 #zrobic ladne wyswietlanie i z linii polece
