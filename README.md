@@ -3,7 +3,7 @@
 Jest to Baza danych gier z cdaction (obecnie numery 1-245 (nie wszystkie są na stronie))\
 Do bazy w miarę możliwości będą dodawane nowe numery.\
 Jeżeli masz ochotę i czas, to możesz uzupełnić kolumny i mi wysłać, albo napisać w komentarzu.\
-Nazwy gier zostały zescrapowane ze strony https://www.cdaction.pl/magazyn/\
+Nazwy gier zostały zescrapowane ze strony https://www.cdaction.pl/magazyn/  \
 
 Plik bazy danych jest w formacie sqlite3, nazywa się "cdaction.db".\
 
