@@ -8,16 +8,16 @@ Plik bazy danych jest w formacie sqlite3, nazywa się "cdaction.db".
 
 ![Screenshot](screen.png)
 
-#-sposób użycia (Linux Ubuntu)
-#- instalacja sqlite3
-
+##-sposób użycia (Linux Ubuntu)
+* Instalacja sqlite3
 ```
 $ sudo apt update
+$ sudo apt install wget
 $ sudo apt install sqlite3
 ```
-
-
-
-Sciągnij bazę na dysk
-
+* Ściągnij bazę na dysk
+```
+wget https://github.com/kerszl/ficda/raw/master/cdaction.db
+```
 przykład wyszukiwania
+
