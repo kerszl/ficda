@@ -6,5 +6,18 @@ Nazwy gier zostały zescrapowane ze strony https://www.cdaction.pl/magazyn/
 
 Plik bazy danych jest w formacie sqlite3, nazywa się "cdaction.db".
 
-
 ![Screenshot](screen.png)
+
+#-sposób użycia (Linux Ubuntu)
+#- instalacja sqlite3
+
+```
+$ sudo apt update
+$ sudo apt install sqlite3
+```
+
+
+
+Sciągnij bazę na dysk
+
+przykład wyszukiwania
