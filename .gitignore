@@ -1,2 +1,5 @@
 .gitignore 
 *.html
+__pycache__
+tmp
+orig db

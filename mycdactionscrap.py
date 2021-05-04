@@ -1,4 +1,10 @@
-LAST_NUMBER =244
+LAST_NUMBER =244 #last number of cdaction
+
+from urllib.request import urlopen
+from bs4 import BeautifulSoup as bs
+import re
+import json
+
 
 class MyCdActionScrap:
     CHAPTERS = {

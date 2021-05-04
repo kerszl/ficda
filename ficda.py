@@ -9,17 +9,17 @@ from random import randint
 #import sqlite3
 #from pathlib import Path
 
-#LAST_NUMBER = 244 #last nr of cd action
+
 BASE_NAME = "cdaction.db" #name of cd action base with games
 
 from mycdactionscrap import MyCdActionScrap
 from mycdactionscrap import LAST_NUMBER
 from mysqlite3 import MySqlite3
 
-
+LAST_NUMBER=LAST_NUMBER+1
 
 #1.---zgrywamy numery ze strony cdaction do formatu json w katalogu numery (numer-x.json)
-# for i in range(1,LAST_NUMBER+1):
+# for i in range(1,LAST_NUMBER):
 #     a=MyCdActionScrap(i)
 #     a.scrap()
 #     a.json_dumping()    
@@ -28,7 +28,7 @@ from mysqlite3 import MySqlite3
 
 #2.--- Zczytujemy pliki json i wrzucamy wszystko do bazy sqlite
 
-baza = MySqlite3 (BASE_NAME,truncate=True)
+baza = MySqlite3 (BASE_NAME,truncate=True) #uwaga, tworzy baze od zera!!!
 #baza = MySqlite3 (BASE_NAME)
 for i in range(1,LAST_NUMBER):
     json_iter="numery/numer-"+str(i)+".json"
