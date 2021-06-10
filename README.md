@@ -7,7 +7,7 @@ Nazwy gier zostały zescrapowane ze strony https://www.cdaction.pl/magazyn/
 
 Plik bazy danych jest w formacie sqlite3, nazywa się "cdaction.db".\
 
-![Screenshot](screen.png)
+![Screenshot](github/pictures/screen.png)
 
 # Sposób użycia (Linux Ubuntu):
 
@@ -27,4 +27,4 @@ wget https://github.com/kerszl/ficda/raw/master/cdaction.db
 $ sqlite3 cdaction.db "select nr_magazine,date,section,title from magazines where title like '%doom%'"
 
 ```
-![Screenshot](searched.png)
+![Screenshot](github/pictures/searched.png)
