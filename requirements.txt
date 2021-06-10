@@ -5,8 +5,8 @@
 #pkg1
 #pkg2
 #pkg3>=1.0,<=2.0
-bs4
 #tqdm
-requests
 #pyyaml
 #PyYAML
+bs4
+requests
