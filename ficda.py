@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-__version__ = "0.2"
+__version__ = "0.2a"
 
 #from bs4 import BeautifulSoup as bs
 #from urllib.request import urlopen
@@ -88,7 +88,7 @@ parser = argparse.ArgumentParser(description="""Ficda to program, który zgrywa 
 które zostały opisane w numerach cdaction. Dane są zgrywane ze strony cdaction.pl.
 """, formatter_class=argparse.RawTextHelpFormatter,add_help=False
                                  )
-parser._optionals.title = 'Argumenty opcjonalne'
+parser._optionals.title = 'Parametry'
 
 parser.add_argument('-u', '--update', help='aktualizuje gry ze strony i wrzuca do bazy',action='store_true' )
 parser.add_argument('-s', '--search', metavar='[nazwa gry]', help='wyszukuje gre z bazy' )
@@ -109,7 +109,7 @@ if args.search:
     exit()
 
 
-
+parser.print_help()
 
 
 
