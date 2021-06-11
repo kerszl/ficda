@@ -61,10 +61,10 @@ class MySqlite3:
                             (nr_date[0],nr_date[1],section,title,"NULL","NULL","NULL","NULL","NULL","NULL"))
                 self.conn.commit()                       
             
-        print ("Cd action nr "+str(pure_numer)+" wrzucony do bazy") 
+        print ("Cd action nr "+str(pure_numer)+" wrzucony do bazy - ok") 
                
     def search_title(self,title):
-        self.cursor.execute("SELECT * FROM magazines WHERE title LIKE "+"'%"+title+"%'")
+        self.cursor.execute("SELECT * FROM magazines WHERE title LIKE "+"'%"+title+"%' LIMIT 99")
         title_found = self.cursor.fetchall()
         return title_found
 
