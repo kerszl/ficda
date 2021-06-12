@@ -1,6 +1,4 @@
 .gitignore 
 *.html
-__pycache__
-tmp
-orig db
-tempCodeRunnerFile.py
+temp*
+tmp*
