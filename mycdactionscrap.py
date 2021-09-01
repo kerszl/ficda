@@ -55,7 +55,7 @@ class MyCdActionScrap:
         try:
             self.last_number = int(soup.find(id="lista_wydan").option['value'])
         except:
-            print ("Nie mogę pobrać wartosci ostatniego numeru. Przypisuję 246")            
+            print ("Nie mogę pobrać wartości ostatniego numeru. Przypisuję 246")            
             self.last_number=246
 
     def check_saved_last_number (self):
@@ -106,9 +106,9 @@ class MyCdActionScrap:
                 status="- ok"
                 if len(self.section_title)==0:
                     status="pusty"
-                print ("Zgralem:",file,status)   
+                print ("Zgrałem:",file,status)   
             except ValueError as e:                
-                print ("Problem z plikiem",file,"lub formatem json")
+                print ("Problem z plikiem",file,"lub formatem json.")
                 print (e)        
                 exit()
 

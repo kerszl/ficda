@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-__version__ = "0.2a"
+__version__ = "0.2b"
 
 #from bs4 import BeautifulSoup as bs
 #from urllib.request import urlopen
@@ -11,7 +11,6 @@ import argparse
 import re
 #import sqlite3
 #from pathlib import Path
-
 
 BASE_NAME = "cdaction.db" #name of cd action base with games
 
