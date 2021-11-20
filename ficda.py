@@ -75,10 +75,10 @@ def przeszukaj_baze (tytul):
     baza = MySqlite3 (BASE_NAME)
     znaleziony_tytul=baza.search_title(tytul) 
 
-    print("{:<3}{:<5}{:<9}{:<17}{}".format("ID","NR","DATA","SEKCJA","NAZWA"))
+    print("{:<3}{:<8}{:<9}{:<17}{}".format("ID","NR(WWW)","DATA","SEKCJA","NAZWA"))
 
     for j,i in enumerate(znaleziony_tytul,1):
-        print("{:<3}{:<5}{:<9}{:<17}{}".format(str(j),i[1],przerob_nazwe_miesiaca(i[2]),i[3],i[4]))
+        print("{:<3}{:<8}{:<9}{:<17}{}".format(str(j),i[1],przerob_nazwe_miesiaca(i[2]),i[3],i[4]))
 
     baza.close_db()
 
